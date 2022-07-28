@@ -21,18 +21,22 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: Colors.grey[100],
+        title: Text(
+          'Messages',
+          style: TextStyle(fontSize: 24, color: Colors.black),
+        ),
+      ),
       body: SingleChildScrollView(
         reverse: true,
         child: Container(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.only(top: 20, right: 8, left: 8, bottom: 8),
           child: Center(
             child: Column(
               children: [
-                Container(
-                    child: Text(
-                  'Messages',
-                  style: TextStyle(fontSize: 24),
-                )),
                 //! Messages List View
                 MessageListView(),
                 //! TextInput ( Message )
@@ -46,24 +50,33 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
                       width: 50,
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(100)),
-                      child: ElevatedButton(
-                          onPressed: () async {
-                            if (_formKeyName.currentState!.validate() == true &&
-                                _formKeyMessage.currentState!.validate() ==
-                                    true) {
-                              debugPrint('form validated');
-                              await addMessageAndNameToTheDB(
-                                name: _myControlerName.text,
-                                message: _myControlerMessage.text,
-                              ).then((value) => print(value.path));
-                            } else {
-                              debugPrint('form not validated');
-                            }
-                          },
-                          style: ButtonStyle(
-                              backgroundColor:
-                                  MaterialStateProperty.all(Colors.green[500])),
-                          child: Icon(Icons.send)),
+                      child: InkWell(
+                        onTap: () async {
+                          if (_formKeyName.currentState!.validate() == true &&
+                              _formKeyMessage.currentState!.validate() ==
+                                  true) {
+                            debugPrint('form validated');
+                            await addMessageAndNameToTheDB(
+                              name: _myControlerName.text,
+                              message: _myControlerMessage.text,
+                            ).then((value) => print(value.path));
+                          } else {
+                            debugPrint('form not validated');
+                          }
+                        },
+                        child: Container(
+                          height: 50,
+                          width: 50,
+                          decoration: BoxDecoration(
+                            color: Colors.green[400],
+                            borderRadius: BorderRadius.circular(100),
+                          ),
+                          child: Icon(
+                            Icons.send,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
                     ),
                   ],
                 ),
@@ -92,7 +105,7 @@ class _UserMessageScreenState extends State<UserMessageScreen> {
   Widget MessageListView() {
     return Container(
       height: 500,
-      padding: EdgeInsets.only(top: 30, left: 10, right: 10),
+      padding: EdgeInsets.only(top: 50, left: 10, right: 10),
       child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
         stream: _firebaseFirestore.collection('users').snapshots(),
         builder: ((context, snapshot) {
