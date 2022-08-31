@@ -1,5 +1,7 @@
 {
     "recommendations": [
-        "Tyriar.lorem-ipsum"
+        "tyriar.lorem-ipsum",
+        "shazbot.select-between",
+        "Shazbot.select-between"
     ]
 }
