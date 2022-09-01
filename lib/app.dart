@@ -1,6 +1,7 @@
-import 'package:assignmentw8/src/screens/Design_Currency.dart';
-import 'package:assignmentw8/src/screens/design_list_tile.dart';
-import 'package:assignmentw8/src/screens/test_field_test_krd_language.dart';
+import 'package:assignmentw8/other/Design_Currency.dart';
+import 'package:assignmentw8/src/screens/awsome_notification_screen.dart';
+import 'package:assignmentw8/other/design_list_tile.dart';
+import 'package:assignmentw8/other/test_field_test_krd_language.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatefulWidget {
@@ -15,7 +16,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: TestingTextField(),
+      home: AwsomeNotification(),
     );
   }
 }

@@ -4,7 +4,15 @@ A new Flutter project.
 
 ## Getting Started
 
+## Awesome Notification Process
 
+if you want to add Awesome Notification to your app project, you have to follow this steps below:
+
+Step 1: first you don't need to check the [other] directory because you don't need it at all :).
+
+Step 2: add latest version of Awesome Notification to your Dependance, and this is the link: <https://pub.dev/packages/awesome_notifications>
+
+Step 3: 
 ### TODO
 
 - [x] Create a project
